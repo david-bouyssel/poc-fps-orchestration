@@ -16,6 +16,19 @@ argument : non supporté en Node 20 (version de la CI).
 Pas de test navigateur automatisé (pas de Playwright) : le rendu canvas et le câblage
 DOM se vérifient manuellement (voir plus bas).
 
+## Vérification visuelle (vague visual-qa)
+- Dossier servi : `src`
+- Serveur : `node scripts/visual-qa-server.mjs --root src --out docs/visual-qa`
+- URL : `http://127.0.0.1:8765/`
+- Mise en route : saisir une graine fixe (ex. `42`) dans « Graine », cliquer
+  « Générer », puis « Explorer en 3D » (`#fps-enter-button`). Le canvas
+  capturé est `#maze-canvas` ; le score et la légende des fruits sont en HTML
+  (`#fps-hud`), à juger sur le `screenshot`.
+- Entrées (codes physiques, `KeyboardEvent.code`) : `KeyW` / `ArrowUp` avancer,
+  `KeyS` / `ArrowDown` reculer, `KeyQ` / `ArrowLeft` et `KeyE` / `ArrowRight` tourner,
+  `KeyA` / `KeyD` pas de côté, `ShiftLeft` courir, `KeyM` carte plein écran,
+  `Escape` retour à la vue de dessus.
+
 ## Écrire un test
 - Emplacement : `tests/unit/` (logique pure : `src/maze/`, `src/game/`,
   `src/render/maze-geometry.js`, `src/render/raycaster.js`, `src/render/wall-textures.js`,
